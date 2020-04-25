@@ -8,6 +8,10 @@ body {
 	align-items: center;
 }
 
+.send-container {
+	align-items: center;
+}
+
 .msg-container {
 	overflow: scroll;
 	height: 400px;
