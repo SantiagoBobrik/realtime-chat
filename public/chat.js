@@ -26,12 +26,17 @@ socket.on("chat:msg", (data) => {
 	msgcontainer.innerHTML += ` <div class="col-12 d-flex justify-content-${flex}">
     <p class="${msgType}"><strong>${data.user}:</strong> <br>${data.msg}</p>
 </div>`;
+
+	//pateamos el scroll abajo para ver nuevos mensajes
+	msgcontainer.scrollTop = msgcontainer.scrollHeight;
 });
 
+//emitimos evento cuando  el usuario esta tipeando
 message.addEventListener("keypress", () => {
 	socket.emit("user:typing", user.value);
 });
 
+//recibimos evento si esta tipiando
 socket.on("user:typing", (user) => {
 	typing.innerHTML = `<em>${user} esta escribiendo..</em>`;
 
