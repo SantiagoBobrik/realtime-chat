@@ -12,6 +12,10 @@ body {
 	align-items: center;
 }
 
+.typing {
+	height: 40px;
+}
+
 .msg-container {
 	overflow: scroll;
 	height: 400px;
