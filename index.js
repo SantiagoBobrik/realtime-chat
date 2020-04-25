@@ -19,6 +19,7 @@ const io = SocketIo.listen(server);
 io.on("connection", (socket) => {
 	console.log("Nueva Conexion", socket.id);
 
+	io.sockets.emit("user:login");
 	socket.on("chat:msg", (data) => {
 		io.sockets.emit("chat:msg", data);
 	});

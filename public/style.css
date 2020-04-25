@@ -73,3 +73,43 @@ body {
 	box-shadow: 0px 0px 0px;
 	color: white;
 }
+
+.true {
+	position: fixed;
+	right: 10px;
+	top: 10px;
+	transition: 0.3s;
+}
+
+.false {
+	position: fixed;
+	right: -400px;
+	top: 10px;
+}
+
+.hide {
+	opacity: 0;
+	transition: 2s;
+}
+.join-toast {
+	background: #4e57ef;
+	height: 60px;
+	width: 200px;
+	color: #0a0a0a;
+	border: 1px solid #2e3a48;
+	box-shadow: 3px 4px 0px #2e3a48;
+	position: relative;
+}
+
+.join-toast p {
+	font-size: 15px;
+	position: absolute;
+	margin: auto;
+	color: white;
+	font-weight: 900;
+	text-align: center;
+	top: 50%;
+	left: 50%;
+	margin-right: -50%;
+	transform: translate(-50%, -50%);
+}

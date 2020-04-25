@@ -5,6 +5,7 @@ const user = document.querySelector(".user-input ");
 const message = document.querySelector(".msg-input ");
 const msgcontainer = document.querySelector(".msg-container");
 const typing = document.querySelector(".typing");
+const toast = document.querySelector(".toast-container");
 
 //Envio mensaje
 send.addEventListener("click", () => {
@@ -42,5 +43,14 @@ socket.on("user:typing", (user) => {
 
 	setTimeout(() => {
 		typing.innerHTML = "";
+	}, 2000);
+});
+
+socket.on("user:login", () => {
+	toast.classList.remove("false");
+	toast.classList.add("true");
+
+	setTimeout(() => {
+		toast.classList.add("hide");
 	}, 2000);
 });
