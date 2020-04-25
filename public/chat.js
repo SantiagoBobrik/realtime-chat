@@ -4,16 +4,15 @@ const send = document.querySelector(".send");
 const user = document.querySelector(".user-input ");
 const message = document.querySelector(".msg-input ");
 const msgcontainer = document.querySelector(".msg-container");
+const typing = document.querySelector(".typing");
 
+//Envio mensaje
 send.addEventListener("click", () => {
 	let data = { msg: message.value, user: user.value };
 	socket.emit("chat:msg", data);
 });
 
-let pepe = `<div class="col-12 d-flex justify-content-end">
-<p class="other">bien y vos?</p>
-</div>;`;
-
+//Recibo mensajes
 socket.on("chat:msg", (data) => {
 	let msgType = "";
 	let flex = "";
@@ -27,4 +26,16 @@ socket.on("chat:msg", (data) => {
 	msgcontainer.innerHTML += ` <div class="col-12 d-flex justify-content-${flex}">
     <p class="${msgType}"><strong>${data.user}:</strong> <br>${data.msg}</p>
 </div>`;
+});
+
+message.addEventListener("keypress", () => {
+	socket.emit("user:typing", user.value);
+});
+
+socket.on("user:typing", (user) => {
+	typing.innerHTML = `<em>${user} esta escribiendo..</em>`;
+
+	setTimeout(() => {
+		typing.innerHTML = "";
+	}, 2000);
 });
