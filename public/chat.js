@@ -10,7 +10,9 @@ const toast = document.querySelector(".toast-container");
 //Envio mensaje
 send.addEventListener("click", () => {
 	let data = { msg: message.value, user: user.value };
+
 	socket.emit("chat:msg", data);
+	message.value = "";
 });
 
 //Recibo mensajes
@@ -30,6 +32,7 @@ socket.on("chat:msg", (data) => {
 
 	//pateamos el scroll abajo para ver nuevos mensajes
 	msgcontainer.scrollTop = msgcontainer.scrollHeight;
+	message.value = "";
 });
 
 //emitimos evento cuando  el usuario esta tipeando
